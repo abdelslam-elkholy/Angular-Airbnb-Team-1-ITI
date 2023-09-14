@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ICategory } from 'src/app/Models/ICategory';
 import { CategoriesService } from 'src/app/Services/categories.service';
@@ -20,5 +20,23 @@ export class CategoriesComponent implements OnInit {
     this.categoryService.getAllCategories().subscribe((categories) => {
       this.categories = categories;
     });
+  }
+
+  addCategory() {
+    this.router.navigate(['add-category', 'new']);
+  }
+
+  editCategory(id: string) {
+    this.router.navigate(['add-category', id]);
+  }
+
+  deleteCategory(id: string) {
+    if (confirm('Are you sure you want to delete this category?')) {
+      this.categoryService.deleteCategory(id).subscribe((category) => {
+        this.categoryService.getAllCategories().subscribe((categories) => {
+          this.categories = categories;
+        });
+      });
+    }
   }
 }

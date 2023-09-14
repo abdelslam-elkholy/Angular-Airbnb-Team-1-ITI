@@ -11,6 +11,7 @@ import { ReservationsComponent } from './Components/reservations/reservations.co
 import { UsersComponent } from './Components/users/users.component';
 import { AddHouseComponent } from './Components/add-house/add-house.component';
 import { CategoriesComponent } from './Components/categories/categories.component';
+import { AddCategoryComponent } from './Components/add-category/add-category.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { CategoriesComponent } from './Components/categories/categories.componen
     UsersComponent,
     AddHouseComponent,
     CategoriesComponent,
+    AddCategoryComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],
