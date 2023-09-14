@@ -8,9 +8,9 @@ export interface IHouse {
   numberOfBedrooms: number;
   guestNumber: number;
   rate?: number;
-  description: string;
+  description?: string;
   comments?: string;
   images: string[];
-  category: string;
-  userId: string;
+  category?: string;
+  userId?: string;
 }

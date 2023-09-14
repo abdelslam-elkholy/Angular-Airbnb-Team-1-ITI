@@ -16,7 +16,9 @@ export class HousesService {
   }
 
   getHouseById(id: string): Observable<IHouse> {
-    return this.httpClient.get<IHouse>(`${environment.BaseApiURL}/house/${id}`);
+    return this.httpClient
+      .get<any>(`${environment.BaseApiURL}/house/${id}`)
+      .pipe(map((res: any) => res.data.house));
   }
 
   addHouse(house: IHouse): Observable<IHouse> {
@@ -27,7 +29,7 @@ export class HousesService {
   }
 
   updateHouse(house: IHouse): Observable<IHouse> {
-    return this.httpClient.put<IHouse>(
+    return this.httpClient.patch<IHouse>(
       `${environment.BaseApiURL}/house/${house._id}`,
       house
     );
