@@ -11,6 +11,7 @@ import { environment } from '../../../environments/environment';
 export class HousesComponent implements OnInit {
   houses: IHouse[] = [];
   url = environment.BaseApiURL;
+
   constructor(private housesService: HousesService, private router: Router) {}
 
   ngOnInit(): void {

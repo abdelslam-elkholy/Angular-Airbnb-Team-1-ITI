@@ -10,6 +10,7 @@ import { HousesComponent } from './Components/houses/houses.component';
 import { ReservationsComponent } from './Components/reservations/reservations.component';
 import { UsersComponent } from './Components/users/users.component';
 import { AddHouseComponent } from './Components/add-house/add-house.component';
+import { CategoriesComponent } from './Components/categories/categories.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { AddHouseComponent } from './Components/add-house/add-house.component';
     ReservationsComponent,
     UsersComponent,
     AddHouseComponent,
+    CategoriesComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],
