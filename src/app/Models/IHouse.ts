@@ -1,5 +1,5 @@
 export interface IHouse {
-  id?: string;
+  _id?: string;
   name: string;
   address: string;
   price: number;

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { IHouse } from '../Models/IHouse';
 import { environment } from '../../environments/environment';
 @Injectable({
@@ -10,7 +10,9 @@ export class HousesService {
   constructor(private httpClient: HttpClient) {}
 
   getAllHouses(): Observable<IHouse[]> {
-    return this.httpClient.get<IHouse[]>(`${environment.BaseApiURL}/house`);
+    return this.httpClient
+      .get<any>(`${environment.BaseApiURL}/house`)
+      .pipe(map((res: any) => res.data.houses));
   }
 
   getHouseById(id: string): Observable<IHouse> {
@@ -26,7 +28,7 @@ export class HousesService {
 
   updateHouse(house: IHouse): Observable<IHouse> {
     return this.httpClient.put<IHouse>(
-      `${environment.BaseApiURL}/house/${house.id}`,
+      `${environment.BaseApiURL}/house/${house._id}`,
       house
     );
   }
