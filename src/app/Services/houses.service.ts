@@ -8,6 +8,7 @@ import { environment } from '../../environments/environment';
 })
 export class HousesService {
   constructor(private httpClient: HttpClient) {}
+
   getAllHouses(): Observable<IHouse[]> {
     return this.httpClient.get<IHouse[]>(`${environment.BaseApiURL}/house`);
   }
