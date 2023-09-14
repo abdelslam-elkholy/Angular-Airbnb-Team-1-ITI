@@ -10,7 +10,7 @@ export interface IHouse {
   rate?: number;
   description?: string;
   comments?: string;
-  images: string[];
+  images: any[];
   category?: string;
   userId?: string;
 }

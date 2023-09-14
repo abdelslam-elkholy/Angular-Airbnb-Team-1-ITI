@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { IHouse } from 'src/app/Models/IHouse';
 import { HousesService } from 'src/app/Services/houses.service';
-
+import { environment } from '../../../environments/environment';
 @Component({
   selector: 'app-houses',
   templateUrl: './houses.component.html',
@@ -10,6 +10,7 @@ import { HousesService } from 'src/app/Services/houses.service';
 })
 export class HousesComponent implements OnInit {
   houses: IHouse[] = [];
+  url = environment.BaseApiURL;
   constructor(private housesService: HousesService, private router: Router) {}
 
   ngOnInit(): void {

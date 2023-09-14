@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 import { IHouse } from '../Models/IHouse';
 import { environment } from '../../environments/environment';
@@ -22,10 +22,17 @@ export class HousesService {
   }
 
   addHouse(house: IHouse): Observable<IHouse> {
-    return this.httpClient.post<IHouse>(
-      `${environment.BaseApiURL}/house`,
-      house
-    );
+    try {
+      return this.httpClient.post<IHouse>(
+        `${environment.BaseApiURL}/house`,
+        house
+      );
+    } catch (error: any) {
+      console.error('HTTP Error:', error);
+      console.error('Error Status:', error.status);
+      console.error('Error Message:', error.message);
+      throw 'Something went wrong. Please try again later.';
+    }
   }
 
   updateHouse(house: IHouse): Observable<IHouse> {
