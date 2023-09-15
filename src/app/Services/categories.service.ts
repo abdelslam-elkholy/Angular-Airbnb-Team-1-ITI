@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ICategory } from '../Models/ICategory';
 import { environment } from '../../environments/environment';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -13,13 +13,13 @@ export class CategoriesService {
   getAllCategories(): Observable<ICategory[]> {
     return this.httpClient
       .get<any>(`${environment.BaseApiURL}/category`)
-      .pipe((res: any) => res.data.categories);
+      .pipe(map((res: any) => res.data.categories));
   }
 
   getCategoryById(id: string): Observable<ICategory> {
     return this.httpClient
       .get<any>(`${environment.BaseApiURL}/category/${id}`)
-      .pipe((res: any) => res.data.category);
+      .pipe(map((res: any) => res.data.category));
   }
 
   addCategory(category: ICategory) {
