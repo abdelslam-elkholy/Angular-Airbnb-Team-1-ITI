@@ -1,1 +1,26 @@
-<p>add-category works!</p>
+<div class="container mt-4">
+  <h2>{{ isNewCategory ? "Add New Category" : "Edit Category" }}</h2>
+  <div *ngIf="successMessage" class="alert alert-success mt-3">
+    {{ successMessage }}
+  </div>
+  <form #categoryForm="ngForm" (ngSubmit)="saveCategory()">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        class="form-control"
+        [(ngModel)]="currentCategory.name"
+        required
+      />
+    </div>
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="categoryForm.invalid"
+    >
+      {{ isNewCategory ? "Add Category" : "Update Category" }}
+    </button>
+  </form>
+</div>
