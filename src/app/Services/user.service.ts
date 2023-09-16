@@ -6,7 +6,15 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class UserService {
-  constructor(private httpClient: HttpClient) {}
+  http = {};
+  constructor(private httpClient: HttpClient) {
+    this.http = {
+      Headers: {
+        'Content-Type': 'application/json',
+        // Authorization: 'Bearer ' + this.getCookie('token'),
+      },
+    };
+  }
 
   login(email: string, password: string): Observable<object> {
     return this.httpClient.post(`${environment.BaseApiURL}/user//signin`, {
@@ -25,5 +33,9 @@ export class UserService {
 
   deleteUser(id: number) {
     return this.httpClient.delete(`${environment.BaseApiURL}/user/${id}`);
+  }
+
+  updateUser(id: number, user: object) {
+    return this.httpClient.put(`${environment.BaseApiURL}/user/${id}`, user);
   }
 }
