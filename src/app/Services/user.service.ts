@@ -16,13 +16,6 @@ export class UserService {
     };
   }
 
-  login(email: string, password: string): Observable<object> {
-    return this.httpClient.post(`${environment.BaseApiURL}/user//signin`, {
-      email,
-      password,
-    });
-  }
-
   getUsers() {
     return this.httpClient.get(`${environment.BaseApiURL}/user/`);
   }
