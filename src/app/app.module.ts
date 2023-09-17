@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { SideBarComponent } from './Components/side-bar/side-bar.component';
 import { HousesComponent } from './Components/houses/houses.component';
 import { ReservationsComponent } from './Components/reservations/reservations.component';
 import { UsersComponent } from './Components/users/users.component';
@@ -16,7 +15,6 @@ import { AddCategoryComponent } from './Components/add-category/add-category.com
 @NgModule({
   declarations: [
     AppComponent,
-    SideBarComponent,
     HousesComponent,
     ReservationsComponent,
     UsersComponent,

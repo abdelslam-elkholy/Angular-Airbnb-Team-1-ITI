@@ -4,6 +4,7 @@ import { HousesComponent } from './Components/houses/houses.component';
 import { AddHouseComponent } from './Components/add-house/add-house.component';
 import { CategoriesComponent } from './Components/categories/categories.component';
 import { AddCategoryComponent } from './Components/add-category/add-category.component';
+import { UsersComponent } from './Components/users/users.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -20,6 +21,11 @@ const routes: Routes = [
     path: 'add-category/:id',
     component: AddCategoryComponent,
     title: 'add category',
+  },
+  {
+    path: 'users',
+    component: UsersComponent,
+    title: 'Users Page',
   },
 ];
 
