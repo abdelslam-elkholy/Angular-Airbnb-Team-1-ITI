@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
@@ -16,19 +16,23 @@ export class UserService {
     };
   }
 
-  getUsers() {
-    return this.httpClient.get(`${environment.BaseApiURL}/user/`);
+  getAllUsers(): Observable<any> {
+    return this.httpClient
+      .get<any>(`${environment.BaseApiURL}/user/`)
+      .pipe(map((res: any) => res.data.users));
   }
 
-  getUser(id: number) {
-    return this.httpClient.get(`${environment.BaseApiURL}/user/${id}`);
+  getUser(id: string): Observable<any> {
+    return this.httpClient
+      .get<any>(`${environment.BaseApiURL}/user/${id}}`)
+      .pipe(map((res: any) => res.data.user));
   }
 
-  deleteUser(id: number) {
+  deleteUser(id: string): Observable<any> {
     return this.httpClient.delete(`${environment.BaseApiURL}/user/${id}`);
   }
 
-  updateUser(id: number, user: object) {
+  updateUser(id: string, user: object): Observable<any> {
     return this.httpClient.put(`${environment.BaseApiURL}/user/${id}`, user);
   }
 }

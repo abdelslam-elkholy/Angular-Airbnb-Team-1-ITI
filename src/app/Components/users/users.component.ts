@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/Services/user.service';
 
 @Component({
@@ -7,7 +8,13 @@ import { UserService } from 'src/app/Services/user.service';
   styleUrls: ['./users.component.css'],
 })
 export class UsersComponent implements OnInit {
-  constructor(private userService: UserService) {}
+  users: object[] = [];
 
-  ngOnInit(): void {}
+  constructor(private userService: UserService, router: Router) {}
+
+  ngOnInit(): void {
+    this.userService.getAllUsers().subscribe((users) => {
+      this.users = users;
+    });
+  }
 }
