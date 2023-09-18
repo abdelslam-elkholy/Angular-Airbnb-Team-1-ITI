@@ -21,7 +21,7 @@ export class HousesService {
       .pipe(map((res: any) => res.data.house));
   }
 
-  addHouse(house: IHouse): Observable<IHouse> {
+  addHouse(house: FormData): Observable<IHouse> {
     try {
       return this.httpClient.post<IHouse>(
         `${environment.BaseApiURL}/house`,
@@ -35,9 +35,9 @@ export class HousesService {
     }
   }
 
-  updateHouse(house: IHouse): Observable<IHouse> {
+  updateHouse(house: FormData, id: string): Observable<IHouse> {
     return this.httpClient.patch<IHouse>(
-      `${environment.BaseApiURL}/house/${house._id}`,
+      `${environment.BaseApiURL}/house/${id}`,
       house
     );
   }
