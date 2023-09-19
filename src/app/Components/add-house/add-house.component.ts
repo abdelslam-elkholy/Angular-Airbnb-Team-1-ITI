@@ -52,7 +52,6 @@ export class AddHouseComponent implements OnInit {
   }
 
   saveHouse(): void {
-    // Add other form fields to FormData
     this.formData.append('name', this.currentHouse.name);
     this.formData.append('address', this.currentHouse.address);
     this.formData.append('price', this.currentHouse.price.toString());

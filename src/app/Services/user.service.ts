@@ -32,7 +32,19 @@ export class UserService {
     return this.httpClient.delete(`${environment.BaseApiURL}/user/${id}`);
   }
 
-  updateUser(id: string, user: object): Observable<any> {
-    return this.httpClient.put(`${environment.BaseApiURL}/user/${id}`, user);
+  activatUser(id: string): Observable<any> {
+    return this.httpClient.get(`${environment.BaseApiURL}/user/activate/${id}`);
+  }
+
+  deactivatUser(id: string): Observable<any> {
+    return this.httpClient.delete(
+      `${environment.BaseApiURL}/user/deactivate/${id}`
+    );
+  }
+
+  getDeactivatedUsers(): Observable<any> {
+    return this.httpClient
+      .get<any>(`${environment.BaseApiURL}/user/deactivated`)
+      .pipe(map((res: any) => res.data.users));
   }
 }
