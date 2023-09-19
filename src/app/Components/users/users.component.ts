@@ -35,17 +35,21 @@ export class UsersComponent implements OnInit {
   }
 
   activateUser(id: string) {
-    this.userService.activatUser(id).subscribe((user) => {
-      this.getAllUsers();
-      this.getDeactivatedUsers();
-    });
+    if (confirm('Are you sure you want to Activate this user?')) {
+      this.userService.activatUser(id).subscribe((user) => {
+        this.getAllUsers();
+        this.getDeactivatedUsers();
+      });
+    }
   }
 
   deactivateUser(id: string) {
-    this.userService.deactivatUser(id).subscribe((user) => {
-      this.getAllUsers();
-      this.getDeactivatedUsers();
-    });
+    if (confirm('Are you sure you want to deactivate this user?')) {
+      this.userService.deactivatUser(id).subscribe((user) => {
+        this.getAllUsers();
+        this.getDeactivatedUsers();
+      });
+    }
   }
 
   deleteUser(id: string) {
