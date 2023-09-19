@@ -33,7 +33,7 @@ export class UserService {
   getHosts(): Observable<IUser[]> {
     return this.httpClient
       .get<IUser[]>(`${environment.BaseApiURL}/user/hosts`)
-      .pipe(map((res: any) => res.data.users));
+      .pipe(map((res: any) => res.data.hosts));
   }
 
   getUser(id: string): Observable<IUser> {
@@ -53,6 +53,16 @@ export class UserService {
   deactivatUser(id: string): Observable<any> {
     return this.httpClient.delete(
       `${environment.BaseApiURL}/user/deactivate/${id}`
+    );
+  }
+
+  makeHost(id: string): Observable<any> {
+    return this.httpClient.get(`${environment.BaseApiURL}/user/makehost/${id}`);
+  }
+
+  deleteHost(id: string): Observable<any> {
+    return this.httpClient.delete(
+      `${environment.BaseApiURL}/user/deletehost/${id}`
     );
   }
 }
