@@ -11,7 +11,7 @@ export class HousesService {
 
   getAllHouses(): Observable<IHouse[]> {
     return this.httpClient
-      .get<any>(`${environment.BaseApiURL}/house`)
+      .get<IHouse[]>(`${environment.BaseApiURL}/house`)
       .pipe(map((res: any) => res.data.houses));
   }
 

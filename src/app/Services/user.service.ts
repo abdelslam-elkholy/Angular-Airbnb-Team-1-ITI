@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { Observable, map } from 'rxjs';
+import { IUser } from '../Models/IUser';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -16,13 +18,25 @@ export class UserService {
     };
   }
 
-  getAllUsers(): Observable<any> {
+  getAllUsers(): Observable<IUser[]> {
     return this.httpClient
-      .get<any>(`${environment.BaseApiURL}/user/`)
+      .get<IUser[]>(`${environment.BaseApiURL}/user/`)
       .pipe(map((res: any) => res.data.users));
   }
 
-  getUser(id: string): Observable<any> {
+  getDeactivatedUsers(): Observable<IUser[]> {
+    return this.httpClient
+      .get<IUser[]>(`${environment.BaseApiURL}/user/deactivated`)
+      .pipe(map((res: any) => res.data.users));
+  }
+
+  getHosts(): Observable<IUser[]> {
+    return this.httpClient
+      .get<IUser[]>(`${environment.BaseApiURL}/user/hosts`)
+      .pipe(map((res: any) => res.data.users));
+  }
+
+  getUser(id: string): Observable<IUser> {
     return this.httpClient
       .get<any>(`${environment.BaseApiURL}/user/${id}}`)
       .pipe(map((res: any) => res.data.user));
@@ -40,11 +54,5 @@ export class UserService {
     return this.httpClient.delete(
       `${environment.BaseApiURL}/user/deactivate/${id}`
     );
-  }
-
-  getDeactivatedUsers(): Observable<any> {
-    return this.httpClient
-      .get<any>(`${environment.BaseApiURL}/user/deactivated`)
-      .pipe(map((res: any) => res.data.users));
   }
 }
