@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ICategory } from 'src/app/Models/ICategory';
 import { IHouse } from 'src/app/Models/IHouse';
+import { CategoriesService } from 'src/app/Services/categories.service';
 import { HousesService } from 'src/app/Services/houses.service';
 
 @Component({
@@ -13,11 +15,15 @@ export class AddHouseComponent implements OnInit {
     name: '',
     address: '',
     price: 0,
+    numberOfRooms: 0,
     numberOfBedrooms: 0,
     guestNumber: 0,
     images: [],
+    description: '',
+    category: '',
   };
 
+  categories: ICategory[] = [];
   isNewHouse: boolean = true;
   successMessage: string | null = null;
 
@@ -26,6 +32,7 @@ export class AddHouseComponent implements OnInit {
 
   constructor(
     private housesService: HousesService,
+    private categoryService: CategoriesService,
     private route: ActivatedRoute,
     private router: Router
   ) {}
@@ -40,6 +47,10 @@ export class AddHouseComponent implements OnInit {
         this.currentHouse = house;
       });
     }
+
+    this.categoryService.getAllCategories().subscribe((categories) => {
+      this.categories = categories;
+    });
   }
 
   handleFileInput(event: any): void {
@@ -68,7 +79,7 @@ export class AddHouseComponent implements OnInit {
       'numberOfRooms',
       this.currentHouse.numberOfRooms!.toString()
     );
-
+    this.formData.append('category', this.currentHouse.category!);
     if (this.isNewHouse) {
       this.housesService.addHouse(this.formData).subscribe(() => {
         this.successMessage = 'House added successfully!';
@@ -86,5 +97,8 @@ export class AddHouseComponent implements OnInit {
           }, 1500);
         });
     }
+  }
+  manageCategories(): void {
+    this.router.navigate(['/categories']);
   }
 }
