@@ -4,13 +4,13 @@ export interface IHouse {
   address: string;
   price: number;
   currencySymbol?: string;
-  numberOfRooms?: number;
+  numberOfRooms: number;
   numberOfBedrooms: number;
   guestNumber: number;
   rate?: number;
-  description?: string;
-  comments?: string;
+  description: string;
+  reviews?: string;
   images: any[];
-  category?: string;
+  category: string;
   userId?: string;
 }

@@ -106,15 +106,14 @@
       </div>
       <div class="col-6">
         <div class="form-group">
-          <label for="name">Name:</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
+          <label for="name">Category:</label>
+          <select
             class="form-control"
-            [(ngModel)]="currentHouse.name"
+            id="category"
+            name="category"
+            [(ngModel)]="currentHouse.category"
             required
-          />
+          ></select>
         </div>
         <div class="form-group">
           <label for="address">Address:</label>
