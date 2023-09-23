@@ -11,6 +11,7 @@ import { UsersComponent } from './Components/users/users.component';
 import { AddHouseComponent } from './Components/add-house/add-house.component';
 import { CategoriesComponent } from './Components/categories/categories.component';
 import { AddCategoryComponent } from './Components/add-category/add-category.component';
+import { NavigationComponent } from './Components/navigation/navigation.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { AddCategoryComponent } from './Components/add-category/add-category.com
     AddHouseComponent,
     CategoriesComponent,
     AddCategoryComponent,
+    NavigationComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],
