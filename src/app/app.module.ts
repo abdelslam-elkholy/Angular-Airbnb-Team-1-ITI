@@ -12,6 +12,7 @@ import { AddHouseComponent } from './Components/add-house/add-house.component';
 import { CategoriesComponent } from './Components/categories/categories.component';
 import { AddCategoryComponent } from './Components/add-category/add-category.component';
 import { NavigationComponent } from './Components/navigation/navigation.component';
+import { TeamComponent } from './Components/team/team.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { NavigationComponent } from './Components/navigation/navigation.componen
     CategoriesComponent,
     AddCategoryComponent,
     NavigationComponent,
+    TeamComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],

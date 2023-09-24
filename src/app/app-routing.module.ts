@@ -5,6 +5,8 @@ import { AddHouseComponent } from './Components/add-house/add-house.component';
 import { CategoriesComponent } from './Components/categories/categories.component';
 import { AddCategoryComponent } from './Components/add-category/add-category.component';
 import { UsersComponent } from './Components/users/users.component';
+import { ReservationsComponent } from './Components/reservations/reservations.component';
+import { TeamComponent } from './Components/team/team.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -27,6 +29,17 @@ const routes: Routes = [
     component: UsersComponent,
     title: 'Users Page',
   },
+  {
+    path: 'reservations',
+    component: ReservationsComponent,
+    title: 'Reservations Page',
+  },
+  {
+    path: 'team',
+    component: TeamComponent,
+    title: 'Team Page',
+  },
+  { path: '**', redirectTo: '/home', pathMatch: 'full' },
 ];
 
 @NgModule({
