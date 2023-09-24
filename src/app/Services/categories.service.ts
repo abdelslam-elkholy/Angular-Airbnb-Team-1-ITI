@@ -12,27 +12,30 @@ export class CategoriesService {
 
   getAllCategories(): Observable<ICategory[]> {
     return this.httpClient
-      .get<any>(`${environment.BaseApiURL}/category`)
+      .get<any>(`${environment.BaseApiURL}/categories`)
       .pipe(map((res: any) => res.data.categories));
   }
 
   getCategoryById(id: string): Observable<ICategory> {
     return this.httpClient
-      .get<any>(`${environment.BaseApiURL}/category/${id}`)
+      .get<any>(`${environment.BaseApiURL}/categories/${id}`)
       .pipe(map((res: any) => res.data.category));
   }
 
   addCategory(category: ICategory) {
-    return this.httpClient.post(`${environment.BaseApiURL}/category`, category);
+    return this.httpClient.post(
+      `${environment.BaseApiURL}/categories`,
+      category
+    );
   }
 
   deleteCategory(id: string) {
-    return this.httpClient.delete(`${environment.BaseApiURL}/category/${id}`);
+    return this.httpClient.delete(`${environment.BaseApiURL}/categories/${id}`);
   }
 
   updateCategory(category: ICategory) {
     return this.httpClient.patch(
-      `${environment.BaseApiURL}/category${category._id}`,
+      `${environment.BaseApiURL}/categories${category._id}`,
       category
     );
   }

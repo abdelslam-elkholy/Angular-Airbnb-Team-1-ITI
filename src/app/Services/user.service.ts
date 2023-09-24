@@ -20,49 +20,53 @@ export class UserService {
 
   getAllUsers(): Observable<IUser[]> {
     return this.httpClient
-      .get<IUser[]>(`${environment.BaseApiURL}/user/`)
+      .get<IUser[]>(`${environment.BaseApiURL}/users/`)
       .pipe(map((res: any) => res.data.users));
   }
 
   getDeactivatedUsers(): Observable<IUser[]> {
     return this.httpClient
-      .get<IUser[]>(`${environment.BaseApiURL}/user/deactivated`)
+      .get<IUser[]>(`${environment.BaseApiURL}/users/deactivated`)
       .pipe(map((res: any) => res.data.users));
   }
 
   getHosts(): Observable<IUser[]> {
     return this.httpClient
-      .get<IUser[]>(`${environment.BaseApiURL}/user/hosts`)
+      .get<IUser[]>(`${environment.BaseApiURL}/users/hosts`)
       .pipe(map((res: any) => res.data.hosts));
   }
 
   getUser(id: string): Observable<IUser> {
     return this.httpClient
-      .get<any>(`${environment.BaseApiURL}/user/${id}}`)
+      .get<any>(`${environment.BaseApiURL}/users/${id}}`)
       .pipe(map((res: any) => res.data.user));
   }
 
   deleteUser(id: string): Observable<any> {
-    return this.httpClient.delete(`${environment.BaseApiURL}/user/${id}`);
+    return this.httpClient.delete(`${environment.BaseApiURL}/users/${id}`);
   }
 
   activatUser(id: string): Observable<any> {
-    return this.httpClient.get(`${environment.BaseApiURL}/user/activate/${id}`);
+    return this.httpClient.get(
+      `${environment.BaseApiURL}/users/activate/${id}`
+    );
   }
 
   deactivatUser(id: string): Observable<any> {
     return this.httpClient.delete(
-      `${environment.BaseApiURL}/user/deactivate/${id}`
+      `${environment.BaseApiURL}/users/deactivate/${id}`
     );
   }
 
   makeHost(id: string): Observable<any> {
-    return this.httpClient.get(`${environment.BaseApiURL}/user/makehost/${id}`);
+    return this.httpClient.get(
+      `${environment.BaseApiURL}/users/makehost/${id}`
+    );
   }
 
   deleteHost(id: string): Observable<any> {
     return this.httpClient.delete(
-      `${environment.BaseApiURL}/user/deletehost/${id}`
+      `${environment.BaseApiURL}/users/deletehost/${id}`
     );
   }
 }

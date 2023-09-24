@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -6,8 +6,12 @@ import { Router } from '@angular/router';
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.css'],
 })
-export class NavigationComponent {
+export class NavigationComponent implements OnInit {
   constructor(private router: Router) {}
+
+  ngOnInit(): void {
+    this.activateLink('/houses');
+  }
 
   activateLink(link: string) {
     this.router.navigateByUrl(link);

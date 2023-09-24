@@ -11,20 +11,20 @@ export class HousesService {
 
   getAllHouses(): Observable<IHouse[]> {
     return this.httpClient
-      .get<IHouse[]>(`${environment.BaseApiURL}/house`)
+      .get<IHouse[]>(`${environment.BaseApiURL}/houses`)
       .pipe(map((res: any) => res.data.houses));
   }
 
   getHouseById(id: string): Observable<IHouse> {
     return this.httpClient
-      .get<any>(`${environment.BaseApiURL}/house/${id}`)
+      .get<any>(`${environment.BaseApiURL}/houses/${id}`)
       .pipe(map((res: any) => res.data.house));
   }
 
   addHouse(house: FormData): Observable<IHouse> {
     try {
       return this.httpClient.post<IHouse>(
-        `${environment.BaseApiURL}/house`,
+        `${environment.BaseApiURL}/houses`,
         house
       );
     } catch (error: any) {
@@ -37,14 +37,14 @@ export class HousesService {
 
   updateHouse(house: FormData, id: string): Observable<IHouse> {
     return this.httpClient.patch<IHouse>(
-      `${environment.BaseApiURL}/house/${id}`,
+      `${environment.BaseApiURL}/houses/${id}`,
       house
     );
   }
 
   deleteHouse(id: string): Observable<IHouse> {
     return this.httpClient.delete<IHouse>(
-      `${environment.BaseApiURL}/house/${id}`
+      `${environment.BaseApiURL}/houses/${id}`
     );
   }
 }

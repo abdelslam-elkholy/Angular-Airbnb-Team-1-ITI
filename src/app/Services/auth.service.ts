@@ -9,7 +9,7 @@ export class AuthService {
   constructor(private httpClient: HttpClient) {}
 
   login(email: string, password: string): Observable<object> {
-    return this.httpClient.post(`${environment.BaseApiURL}/user/signin`, {
+    return this.httpClient.post(`${environment.BaseApiURL}/users/signin`, {
       email,
       password,
     });
