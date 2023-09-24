@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment';
 export class ReservationsService {
   constructor(private httpClient: HttpClient) {}
 
-  getAllReservations(): Observable<IReservation> {
+  getAllReservations(): Observable<IReservation[]> {
     return this.httpClient
       .get(`${environment.BaseApiURL}/reservations`)
       .pipe(map((res: any) => res.data.reservations));
