@@ -9,7 +9,7 @@ export class TeamComponent {
   members = [
     {
       name: 'Abdelslam Elkholy',
-      linkedin: 'https://www.linkedin.com/in/abdelslam-elkholy-1b1b1a1b1/',
+      linkedin: 'https://www.linkedin.com/in/abdelslam-elkholy-3649a920a/',
       github: 'https://github.com/abdelslam-elkholy',
       img: 'abdelslam.jpeg',
     },
