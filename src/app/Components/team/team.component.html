@@ -1,6 +1,14 @@
-<ul role="list" class="divide-y divide-gray-100 grid grid-cols-2 grid-rows-2">
-  <li class="flex justify-between gap-x-6 py-5" *ngFor="let member of members">
-    <div class="flex min-w-0 gap-x-4">
+<h1 class="text-4xl text-gray-600 my-20 text-center">Our Team</h1>
+
+<ul
+  role="list"
+  class="divide-gray-100 grid grid-cols-2 grid-rows-2 gap-14 m-12 rounded"
+>
+  <li
+    class="flex justify-between shadow-sm p-4 items-center"
+    *ngFor="let member of members"
+  >
+    <div class="flex min-w-0 gap-x-4 items-center">
       <img
         class="h-24 w-24 flex-none rounded-full bg-gray-50"
         [src]="'/assets/images/' + member.img"
@@ -10,7 +18,16 @@
         <p class="text-sm font-semibold leading-6 text-gray-900">
           {{ member.name }}
         </p>
+        <p class="mt-1 truncate text-xs leading-5 text-gray-500">
+          leslie.alexander@example.com
+        </p>
       </div>
+    </div>
+    <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
+      <p class="text-sm leading-6 text-gray-900">Co-Founder / CEO</p>
+      <p class="mt-1 text-xs leading-5 text-gray-500">
+        Last seen <time datetime="2023-01-23T13:23Z">3h ago</time>
+      </p>
     </div>
   </li>
 </ul>
