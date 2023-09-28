@@ -32,6 +32,7 @@ export class AuthService {
   logout() {
     this.isAuthenticated = false;
     this.userRole = '';
+    this.cookieService.delete('token');
   }
 
   isLoggedIn(): boolean {
@@ -47,6 +48,10 @@ export class AuthService {
   }
 
   fetchUserData(): Observable<any> {
-    return this.httpClient.get(`${environment.BaseApiURL}/users/getme`);
+    return this.httpClient.get(`${environment.BaseApiURL}/users/getme`).pipe(
+      map((response: any) => {
+        return response.data.user.role === 'admin';
+      })
+    );
   }
 }

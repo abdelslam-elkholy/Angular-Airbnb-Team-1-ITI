@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from 'src/app/Services/auth.service';
 import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
@@ -11,15 +12,17 @@ export class SignInComponent {
   password: string = '';
   constructor(
     private authService: AuthService,
-    private cookieService: CookieService
+    private cookieService: CookieService,
+    private router: Router
   ) {}
 
   login(): void {
     this.authService.signin(this.email, this.password).subscribe((data) => {
       this.cookieService.set('token', data.toString());
-      this.authService.login();
-      this.authService.fetchUserData().subscribe((data) => {
-        console.log(data);
+      this.authService.fetchUserData().subscribe((role) => {
+        this.authService.isLoggedIn(), this.authService.isAdmin();
+
+        this.router.navigate(['/home']);
       });
     });
   }

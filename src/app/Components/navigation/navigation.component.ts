@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/Services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -7,7 +8,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./navigation.component.css'],
 })
 export class NavigationComponent implements OnInit {
-  constructor(private router: Router) {}
+  isloggedIn: boolean = false;
+  constructor(private router: Router, private authService: AuthService) {
+    this.isloggedIn = this.authService.isLoggedIn();
+  }
 
   ngOnInit(): void {
     this.activateLink('/houses');
@@ -15,5 +19,10 @@ export class NavigationComponent implements OnInit {
 
   activateLink(link: string) {
     this.router.navigateByUrl(link);
+  }
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/signin']);
   }
 }

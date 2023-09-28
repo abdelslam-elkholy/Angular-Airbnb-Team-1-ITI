@@ -8,41 +8,58 @@ import { UsersComponent } from './Components/users/users.component';
 import { ReservationsComponent } from './Components/reservations/reservations.component';
 import { TeamComponent } from './Components/team/team.component';
 import { SignInComponent } from './Components/sign-in/sign-in.component';
+import { AdminGuard } from './Guards/admin.guard';
 
 const routes: Routes = [
-  { path: 'home', component: HousesComponent, title: 'Home Page' },
-  { path: 'houses', component: HousesComponent, title: 'Houses Page' },
-  { path: 'add-house/:id', component: AddHouseComponent, title: 'add house' },
-  { path: 'signin', component: SignInComponent, title: 'login' },
-
+  { path: 'signin', component: SignInComponent, data: { title: 'Login' } },
   {
-    path: 'categories',
-    component: CategoriesComponent,
-    title: 'Categories Page',
+    path: '',
+    canActivate: [AdminGuard],
+    children: [
+      {
+        path: 'home',
+        component: HousesComponent,
+        data: { title: 'Home Page' },
+      },
+      {
+        path: 'houses',
+        component: HousesComponent,
+        data: { title: 'Houses Page' },
+      },
+      {
+        path: 'add-house/:id',
+        component: AddHouseComponent,
+        data: { title: 'Add House' },
+      },
+      {
+        path: 'categories',
+        component: CategoriesComponent,
+        data: { title: 'Categories Page' },
+      },
+      {
+        path: 'add-category/:id',
+        component: AddCategoryComponent,
+        data: { title: 'Add Category' },
+      },
+      {
+        path: 'users',
+        component: UsersComponent,
+        data: { title: 'Users Page' },
+      },
+      {
+        path: 'reservations',
+        component: ReservationsComponent,
+        data: { title: 'Reservations Page' },
+      },
+      {
+        path: 'team',
+        component: TeamComponent,
+        data: { title: 'Team Page' },
+      },
+      { path: '', redirectTo: '/home', pathMatch: 'full' },
+      { path: '**', redirectTo: '/home', pathMatch: 'full' },
+    ],
   },
-  {
-    path: 'add-category/:id',
-    component: AddCategoryComponent,
-    title: 'add category',
-  },
-  {
-    path: 'users',
-    component: UsersComponent,
-    title: 'Users Page',
-  },
-  {
-    path: 'reservations',
-    component: ReservationsComponent,
-    title: 'Reservations Page',
-  },
-  {
-    path: 'team',
-    component: TeamComponent,
-    title: 'Team Page',
-  },
-
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: '**', redirectTo: '/home', pathMatch: 'full' },
 ];
 
 @NgModule({
