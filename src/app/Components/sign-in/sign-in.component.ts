@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from 'src/app/Services/auth.service';
-
+import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
@@ -9,10 +9,18 @@ import { AuthService } from 'src/app/Services/auth.service';
 export class SignInComponent {
   email: string = '';
   password: string = '';
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private cookieService: CookieService
+  ) {}
 
   login(): void {
-    console.log(this.email, this.password);
-    this.authService.login(this.email, this.password).subscribe((data) => {});
+    this.authService.signin(this.email, this.password).subscribe((data) => {
+      this.cookieService.set('token', data.toString());
+      this.authService.login();
+      this.authService.fetchUserData().subscribe((data) => {
+        console.log(data);
+      });
+    });
   }
 }

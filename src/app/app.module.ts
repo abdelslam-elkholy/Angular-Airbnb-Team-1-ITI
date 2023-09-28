@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +14,7 @@ import { AddCategoryComponent } from './Components/add-category/add-category.com
 import { NavigationComponent } from './Components/navigation/navigation.component';
 import { TeamComponent } from './Components/team/team.component';
 import { SignInComponent } from './Components/sign-in/sign-in.component';
+import { AuthInterceptor } from './Interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,13 @@ import { SignInComponent } from './Components/sign-in/sign-in.component';
     SignInComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
