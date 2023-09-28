@@ -7,12 +7,13 @@ import { AddCategoryComponent } from './Components/add-category/add-category.com
 import { UsersComponent } from './Components/users/users.component';
 import { ReservationsComponent } from './Components/reservations/reservations.component';
 import { TeamComponent } from './Components/team/team.component';
+import { SignInComponent } from './Components/sign-in/sign-in.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HousesComponent, title: 'Home Page' },
   { path: 'houses', component: HousesComponent, title: 'Houses Page' },
   { path: 'add-house/:id', component: AddHouseComponent, title: 'add house' },
+  { path: 'signin', component: SignInComponent, title: 'login' },
 
   {
     path: 'categories',
@@ -39,6 +40,8 @@ const routes: Routes = [
     component: TeamComponent,
     title: 'Team Page',
   },
+
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', redirectTo: '/home', pathMatch: 'full' },
 ];
 

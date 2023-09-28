@@ -13,6 +13,7 @@ import { CategoriesComponent } from './Components/categories/categories.componen
 import { AddCategoryComponent } from './Components/add-category/add-category.component';
 import { NavigationComponent } from './Components/navigation/navigation.component';
 import { TeamComponent } from './Components/team/team.component';
+import { SignInComponent } from './Components/sign-in/sign-in.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { TeamComponent } from './Components/team/team.component';
     AddCategoryComponent,
     NavigationComponent,
     TeamComponent,
+    SignInComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],
