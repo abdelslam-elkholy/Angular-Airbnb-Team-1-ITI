@@ -22,7 +22,7 @@ export class SignInComponent {
       this.authService.fetchUserData().subscribe((role) => {
         this.authService.isLoggedIn(), this.authService.isAdmin();
 
-        this.router.navigate(['/home']);
+        this.router.navigate(['/']);
       });
     });
   }

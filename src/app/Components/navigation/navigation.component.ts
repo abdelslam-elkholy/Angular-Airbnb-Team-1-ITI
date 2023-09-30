@@ -1,5 +1,5 @@
 import { AuthService } from 'src/app/Services/auth.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,12 +7,12 @@ import { Router } from '@angular/router';
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.css'],
 })
-export class NavigationComponent implements OnInit {
+export class NavigationComponent implements OnInit, OnChanges {
   isloggedIn: boolean = false;
-  constructor(private router: Router, private authService: AuthService) {
+  constructor(private router: Router, private authService: AuthService) {}
+  ngOnChanges(changes: SimpleChanges): void {
     this.isloggedIn = this.authService.isLoggedIn();
   }
-
   ngOnInit(): void {
     this.activateLink('/houses');
   }
