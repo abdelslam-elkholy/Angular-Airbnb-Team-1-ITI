@@ -1,0 +1,134 @@
+.trips {
+  /* position: absolute; */
+  width: 100%;
+  height: -webkit-fill-available;
+  background-color: #f5f5fa;
+}
+
+/* Main Ticket Style */
+.ticketContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.ticket {
+  animation: bouncingCard 0.6s ease-out infinite alternate;
+  background-color: white;
+  color: darkslategray;
+  border-radius: 12px;
+  width: -webkit-fill-available;
+}
+/* Ticket Content */
+.ticketTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  padding: 12px 16px 4px;
+}
+.ticketHr {
+  width: 90%;
+  border: 1px solid #efefef;
+}
+.ticketDetail {
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 4px 16px;
+}
+.ticketSubDetail {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1rem;
+  padding: 12px 16px;
+}
+.ticketSubDetail .code {
+  margin-right: 24px;
+}
+
+/* Ticket Ripper */
+.ticketRip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.circleLeft {
+  width: 12px;
+  height: 24px;
+  background-color: #f5f5fa;
+  border-radius: 0 12px 12px 0;
+}
+.ripLine {
+  width: 100%;
+  border-top: 3px solid #f5f5fa;
+  border-top-style: dashed;
+}
+.circleRight {
+  width: 12px;
+  height: 24px;
+  background-color: #f5f5fa;
+  border-radius: 12px 0 0 12px;
+}
+.progressTrip {
+  width: 14px;
+  height: 14px;
+  background-color: #f5f5fa;
+  padding: 3px;
+  border-radius: 50%;
+}
+.circleProgressTrip {
+  width: 8px;
+  height: 8px;
+  background-color: rgb(255, 56, 92);
+  border-radius: 50%;
+}
+.lineProgressTrip {
+  height: 3px;
+  width: 100%;
+  background-color: #f5f5fa;
+}
+.circleProgressTripGreen {
+  width: 8px;
+  height: 8px;
+  position: relative;
+  top: 15px;
+  background-color: green;
+  border-radius: 50%;
+}
+.tripBtn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 200px;
+  height: 40px;
+  border: none;
+  padding: 0px 20px;
+
+  background-color: red;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 10px;
+
+  transition-duration: 0.3s;
+}
+
+.planeOff {
+  width: 20px;
+  position: absolute;
+  right: 0;
+  margin-right: 20px;
+  /* fill: white; */
+  transition-duration: 0.3s;
+}
+
+.tripBtn:hover {
+  color: transparent;
+}
+
+.tripBtn:hover .planeOff {
+  right: 43%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  transition-duration: 0.3s;
+  color: white;
+}
