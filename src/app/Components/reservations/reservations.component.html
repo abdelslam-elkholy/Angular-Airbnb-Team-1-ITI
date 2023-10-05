@@ -1,77 +1,117 @@
-<div className="trips">
-  <div className="container p-5 ">
-    <div
-      className="ticketContainer my-4"
-      *ngFor="let reservation of reservations"
-    >
-      <div className="ticket">
-        <div className="ticketTitle px-5 pt-4 d-flex justify-content-between">
-          <div
-            className="text-center col-lg-2 col-md-2 col-3 d-flex flex-column"
-          >
-            <h4 className="mb-1">{{ reservation.houseId.name }}</h4>
+<div class="trips">
+  <div class="container p-3" *ngFor="let reservation of reservations">
+    <div class="ticketContainer my-1">
+      <div class="ticket">
+        <div class="ticketTitle px-2 pt-4 d-flex justify-content-between">
+          <div class="text-center col-lg-2 col-md-2 col-3 d-flex flex-column">
+            <h5 class="mb-1">{{ reservation.houseId.name }}</h5>
           </div>
-          <div className="d-flex align-items-center col-lg-8 col-md-8 col-6">
-            <div className="progressTrip ">
-              <div className="circleProgressTrip "></div>
+          <div class="d-flex align-items-center col-lg-8 col-md-8 col-6">
+            <div class="progressTrip">
+              <div class="circleProgressTrip"></div>
             </div>
-            <div className="lineProgressTrip"></div>
+            <div class="lineProgressTrip"></div>
             <div>
-              <!-- <FcHome color="rgb(255, 56, 92)" className="mx-2" /> -->
+              <!-- <FcHome color="rgb(255, 56, 92)" class="mx-2" /> -->
+              <svg
+                height="32px"
+                width="32px"
+                version="1.1"
+                id="Layer_1"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                viewBox="0 0 512.002 512.002"
+                xml:space="preserve"
+                fill="#000000"
+              >
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g
+                  id="SVGRepo_tracerCarrier"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></g>
+                <g id="SVGRepo_iconCarrier">
+                  <path
+                    style="fill: #d5f4fa"
+                    d="M454.873,148.179L268.693,27.044c-7.719-5.021-17.667-5.021-25.384,0L57.129,148.179 c-6.6,4.295-10.58,11.633-10.58,19.509v297.767c0,12.854,10.42,23.272,23.273,23.272h372.36c12.853,0,23.273-10.418,23.273-23.272 V167.687C465.455,159.812,461.473,152.472,454.873,148.179z"
+                  ></path>
+                  <path
+                    style="fill: #c0fcff"
+                    d="M454.873,148.179L268.693,27.044c-3.859-2.512-8.276-3.767-12.693-3.767v465.45h186.18 c12.853,0,23.273-10.418,23.273-23.273V167.687C465.455,159.812,461.473,152.472,454.873,148.179z"
+                  ></path>
+                  <path
+                    style="fill: #da3981"
+                    d="M488.705,221.244c-4.352,0-8.752-1.218-12.671-3.767L256.002,74.315L35.968,217.478 c-10.769,7.007-25.189,3.958-32.2-6.816c-7.01-10.775-3.958-25.19,6.814-32.2l232.725-151.42c7.719-5.021,17.667-5.021,25.384,0 l232.725,151.42c10.772,7.01,13.824,21.425,6.814,32.2C503.774,217.517,496.314,221.244,488.705,221.244z"
+                  ></path>
+                  <path
+                    style="fill: #a91e62"
+                    d="M488.705,221.244c7.609,0,15.068-3.727,19.529-10.581c7.01-10.772,3.958-25.19-6.814-32.2 L268.695,27.042c-3.859-2.512-8.276-3.767-12.693-3.767v51.038l220.032,143.162C479.953,220.026,484.353,221.244,488.705,221.244z"
+                  ></path>
+                  <path
+                    style="fill: #b66d38"
+                    d="M488.727,488.727H23.277c-12.853,0-23.273-10.418-23.273-23.273c0-12.851,10.42-23.273,23.273-23.273 h465.45c12.853,0,23.273,10.421,23.273,23.273C512,478.309,501.58,488.727,488.727,488.727z"
+                  ></path>
+                  <path
+                    style="fill: #aa3827"
+                    d="M488.727,442.182H256.002v46.545h232.725c12.853,0,23.273-10.418,23.273-23.273 C512,452.602,501.58,442.182,488.727,442.182z"
+                  ></path>
+                  <path
+                    style="fill: #b66d38"
+                    d="M318.062,287.032h-124.12c-12.853,0-23.273,10.421-23.273,23.273v155.15 c0,12.854,10.42,23.273,23.273,23.273h124.12c12.853,0,23.272-10.418,23.272-23.273v-155.15 C341.334,297.452,330.915,287.032,318.062,287.032z"
+                  ></path>
+                  <path
+                    style="fill: #aa3827"
+                    d="M318.062,287.032h-62.06v201.695h62.06c12.853,0,23.272-10.418,23.272-23.273v-155.15 C341.334,297.452,330.915,287.032,318.062,287.032z"
+                  ></path>
+                </g>
+              </svg>
             </div>
-            <div className="lineProgressTrip"></div>
-            <div className="progressTrip ">
-              <div className="circleProgressTrip "></div>
+            <div class="lineProgressTrip"></div>
+            <div class="progressTrip">
+              <div class="circleProgressTrip"></div>
             </div>
           </div>
-          <div
-            className="text-center col-lg-2 col-md-2 col-3 d-flex flex-column"
-          >
-            <h4 className="mb-1">
+          <div class="text-center col-lg-2 col-md-2 col-3 d-flex flex-column">
+            <h4 class="mb-1">
               {{ calculateDuration(reservation.checkIn, reservation.checkOut) }}
               /night
             </h4>
           </div>
         </div>
         <div
-          className="ticketTitle px-5 pt-4 d-flex justify-content-between text-center"
+          class="ticketTitle px-5 pt-4 d-flex justify-content-between text-center"
         >
-          <div className="col-lg-2 col-md-2 col-3">
-            <h6 className="text-secondary">Check In</h6>
+          <div class="col-lg-2 col-md-2 col-3">
+            <h6 class="text-secondary">Check In</h6>
             <h6>{{ formattedDate(reservation.checkIn) }}</h6>
           </div>
 
-          <div className="col-lg-1 col-md-2 col-3">
-            <div className="circleProgressTripGreen"></div>
-            <h6>Direct</h6>
-            <h6 className="text-secondary">8hrs 30m</h6>
-          </div>
-
-          <div className="col-lg-2 col-md-2 col-3">
-            <h6 className="text-secondary">Check Out</h6>
-            <!-- <h6>{formattedDate(reservation.checkOut)}</h6> -->
+          <div class="col-lg-2 col-md-2 col-3">
+            <h6 class="text-secondary">Check Out</h6>
+            <h6>{{ formattedDate(reservation.checkOut) }}</h6>
           </div>
         </div>
-        <div className="ticketRip">
-          <div className="circleLeft"></div>
-          <div className="ripLine"></div>
-          <div className="circleRight"></div>
+        <div class="ticketRip">
+          <div class="circleLeft"></div>
+          <div class="ripLine"></div>
+          <div class="circleRight"></div>
         </div>
         <div
-          className="ticketSubDetail px-5 pb-4 ticketTitle d-flex justify-content-between text-center"
+          class="ticketSubDetail px-5 pb-4 ticketTitle d-flex justify-content-between text-center"
         >
-          <div className="col-lg-2 col-md-2 col-3">
+          <div class="col-lg-2 col-md-2 col-3">
             <button class="tripBtn">
               Cancel Reservation
-              <!-- <TbHomeOff className="planeOff" /> -->
+              <!-- <TbHomeOff class="planeOff" /> -->
+              <span class="planeOff"> &nbsp; X</span>
             </button>
           </div>
-          <div className="col-lg-2 col-md-2 col-2">
-            <!-- <h4>{reservation.price} $</h4> -->
+          <div class="col-lg-2 col-md-2 col-2">
+            <h4>{{ reservation.price }} $</h4>
           </div>
         </div>
       </div>
-      <div className="ticketShadow"></div>
+      <div class="ticketShadow"></div>
     </div>
   </div>
 </div>

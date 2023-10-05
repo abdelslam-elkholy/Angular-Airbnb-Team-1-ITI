@@ -20,7 +20,7 @@
 }
 /* Ticket Content */
 .ticketTitle {
-  font-size: 1.5rem;
+  /* font-size: 1.5rem; */
   font-weight: 700;
   padding: 12px 16px 4px;
 }
@@ -29,7 +29,7 @@
   border: 1px solid #efefef;
 }
 .ticketDetail {
-  font-size: 1.1rem;
+  /* font-size: 1.1rem; */
   font-weight: 500;
   padding: 4px 16px;
 }
