@@ -13,4 +13,6 @@ export interface IHouse {
   images: any[];
   category: string;
   userId?: string;
+  lat: number;
+  lng: number;
 }

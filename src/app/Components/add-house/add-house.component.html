@@ -81,6 +81,38 @@
             [(ngModel)]="currentHouse.numberOfRooms"
             required
           />
+
+        </div>
+        <div class="form-group mb-2">
+          <label for="name">Regions:</label>
+          <select
+            class="form-control"
+            id="regions"
+            name="regions"
+            [(ngModel)]="currentHouse.category"
+            required
+          >
+            <option *ngFor="let category of categories" [value]="category._id">
+              {{ category.name }}
+            </option>
+          </select>
+
+          <input
+            type="hidden"
+            id="lat"
+            name="lat"
+            class="form-control"
+            [(ngModel)]="currentHouse.lat"
+            required
+          />
+          <input
+            type="hidden"
+            id="lng"
+            name="lng"
+            class="form-control"
+            [(ngModel)]="currentHouse.lng"
+            required
+          />
         </div>
       </div>
       <div class="col-6">
@@ -138,6 +170,16 @@
           >
             Manage Categories &#8594;
           </p>
+        </div>
+        <div class="form-group mb-2">
+
+          <div class="map-container"
+          leaflet
+          [leafletOptions]="options"
+          (leafletMapReady)="onMapReady($event)"
+          (leafletClick)="mapClicked($event)">
+        </div>
+
         </div>
       </div>
     </div>

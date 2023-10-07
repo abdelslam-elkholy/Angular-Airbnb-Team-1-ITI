@@ -4,6 +4,9 @@ import { ICategory } from 'src/app/Models/ICategory';
 import { IHouse } from 'src/app/Models/IHouse';
 import { CategoriesService } from 'src/app/Services/categories.service';
 import { HousesService } from 'src/app/Services/houses.service';
+import * as Leaflet from 'leaflet';
+
+Leaflet.Icon.Default.imagePath = 'assets/';
 
 @Component({
   selector: 'app-add-house',
@@ -21,6 +24,8 @@ export class AddHouseComponent implements OnInit {
     images: [],
     description: '',
     category: '',
+    lng: 0,
+    lat: 0,
   };
 
   categories: ICategory[] = [];
@@ -51,6 +56,7 @@ export class AddHouseComponent implements OnInit {
     this.categoryService.getAllCategories().subscribe((categories) => {
       this.categories = categories;
     });
+    this.getLocation();
   }
 
   handleFileInput(event: any): void {
@@ -100,5 +106,100 @@ export class AddHouseComponent implements OnInit {
   }
   manageCategories(): void {
     this.router.navigate(['/categories']);
+  }
+
+  map!: Leaflet.Map;
+  markers: Leaflet.Marker[] = [];
+  options = {
+    layers: [
+      Leaflet.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution:
+          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      }),
+    ],
+    zoom: 1,
+    center: { lat: 0, lng: 0 },
+  };
+
+  showPosition(position: GeolocationPosition) {
+    position.coords.latitude;
+    position.coords.longitude;
+
+    console.log(position.coords.latitude, position.coords.longitude);
+  }
+
+  getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(this.showPosition);
+    } else {
+      console.log('Geolocation is not supported by this browser.');
+    }
+  }
+
+  // initMarkers() {
+  //   const initialMarkers = [
+  //     {
+  //       position: { lat: 30.0515328, lng: 31.2541184  },
+  //       draggable: true
+  //     }
+  //   ];
+
+  //   for (let index = 0; index < initialMarkers.length; index++) {
+  //     const data = initialMarkers[index];
+  //     const marker = this.generateMarker(data, index);
+  //     marker.addTo(this.map).bindPopup(`<b>${data.position.lat},  ${data.position.lng}</b>`);
+  //     this.map.panTo(data.position);
+  //     this.markers.push(marker)
+  //   }
+  // }
+
+  generateMarker(data: any, index: number) {
+    return Leaflet.marker(data.position, { draggable: data.draggable })
+      .on('click', (event) => this.markerClicked(event, index))
+      .on('dragend', (event) => this.markerDragEnd(event, index));
+  }
+
+  onMapReady($event: Leaflet.Map) {
+    this.map = $event;
+    // this.initMarkers();
+  }
+
+  mapClicked($event: any) {
+    console.log($event.latlng.lat, $event.latlng.lng);
+    const data = {
+      position: { lat: $event.latlng.lat, lng: $event.latlng.lng },
+      draggable: true,
+    };
+
+    const marker = this.generateMarker(data, this.markers.length - 1);
+    if (this.markers.length - 1 == 0) {
+      this.map!.removeLayer(this.markers[this.markers.length - 1]);
+      this.markers!.splice(this.markers.length - 1, 1);
+      marker
+        .addTo(this.map)
+        .bindPopup(`<b>${data.position.lat},  ${data.position.lng}</b>`);
+      this.markers.push(marker);
+      this.currentHouse.lat = $event.latlng.lat;
+      this.currentHouse.lng = $event.latlng.lng;
+      console.log('mark', marker);
+    } else {
+      marker
+        .addTo(this.map)
+        .bindPopup(`<b>${data.position.lat},  ${data.position.lng}</b>`);
+      this.markers.push(marker);
+      this.currentHouse.lat = $event.latlng.lat;
+      this.currentHouse.lng = $event.latlng.lng;
+      console.log('mark', marker);
+    }
+  }
+
+  markerClicked($event: any, index: number) {
+    console.log($event.latlng.lat, $event.latlng.lng, index);
+  }
+
+  markerDragEnd($event: any, index: number) {
+    console.log($event.target.getLatLng());
+    this.currentHouse.lat = $event.target.getLatLng().lat;
+    this.currentHouse.lng = $event.target.getLatLng().lng;
   }
 }
