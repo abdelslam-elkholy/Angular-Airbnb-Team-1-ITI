@@ -57,7 +57,7 @@ export class AddHouseComponent implements OnInit {
     this.categoryService.getAllCategories().subscribe((categories) => {
       this.categories = categories;
     });
-    this.getLocation();
+    // this.getLocation();
   }
 
   handleFileInput(event: any): void {
@@ -86,8 +86,11 @@ export class AddHouseComponent implements OnInit {
       'numberOfRooms',
       this.currentHouse.numberOfRooms!.toString()
     );
-    // this.formData.append('lat', this.currentHouse.lat);
+    this.formData.append('lat', this.currentHouse.lat.toString());
+    this.formData.append('lng', this.currentHouse.lng.toString());
+    this.formData.append('region', this.currentHouse.region);
     this.formData.append('category', this.currentHouse.category!);
+
     if (this.isNewHouse) {
       this.housesService.addHouse(this.formData).subscribe(() => {
         this.successMessage = 'House added successfully!';
@@ -124,8 +127,8 @@ export class AddHouseComponent implements OnInit {
   };
 
   showPosition(position: GeolocationPosition) {
-    position.coords.latitude;
-    position.coords.longitude;
+    this.currentHouse.lat = position.coords.latitude;
+    this.currentHouse.lng = position.coords.longitude;
 
     console.log(position.coords.latitude, position.coords.longitude);
   }
@@ -183,7 +186,7 @@ export class AddHouseComponent implements OnInit {
       this.markers.push(marker);
       this.currentHouse.lat = $event.latlng.lat;
       this.currentHouse.lng = $event.latlng.lng;
-      console.log('mark', marker);
+      console.log('From Map ' + this.currentHouse.lat, this.currentHouse.lng);
     } else {
       marker
         .addTo(this.map)
@@ -191,7 +194,7 @@ export class AddHouseComponent implements OnInit {
       this.markers.push(marker);
       this.currentHouse.lat = $event.latlng.lat;
       this.currentHouse.lng = $event.latlng.lng;
-      console.log('mark', marker);
+      console.log('From Map ' + this.currentHouse.lat, this.currentHouse.lng);
     }
   }
 
