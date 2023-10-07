@@ -15,4 +15,5 @@ export interface IHouse {
   userId?: string;
   lat: number;
   lng: number;
+  region: string;
 }

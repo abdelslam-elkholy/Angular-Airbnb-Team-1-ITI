@@ -26,6 +26,7 @@ export class AddHouseComponent implements OnInit {
     category: '',
     lng: 0,
     lat: 0,
+    region: 'Africa',
   };
 
   categories: ICategory[] = [];
@@ -85,6 +86,7 @@ export class AddHouseComponent implements OnInit {
       'numberOfRooms',
       this.currentHouse.numberOfRooms!.toString()
     );
+    // this.formData.append('lat', this.currentHouse.lat);
     this.formData.append('category', this.currentHouse.category!);
     if (this.isNewHouse) {
       this.housesService.addHouse(this.formData).subscribe(() => {
